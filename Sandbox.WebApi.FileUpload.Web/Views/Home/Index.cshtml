@@ -1,0 +1,27 @@
+﻿
+<form name="form1" method="post" enctype="multipart/form-data" action="api/upload/">
+    <div>
+        <label for="caption1">File 1 Caption</label>
+        <input id="caption1" name="files[0].caption" type="text" />
+    </div>
+    <div>
+        <label for="image1">File 1</label>
+        <input id="image1" name="files[0].media" type="file" />
+        <img width="100"/>
+    </div>
+
+    <div>
+        <label for="caption2">File 2 Caption</label>
+        <input id="caption2" name="files[1].caption" type="text" />
+    </div>
+    <div>
+        <label for="image2">File 2</label>
+        <input id="image2" name="files[1].media" type="file" />
+        <img width="100"/>
+    </div>
+
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+

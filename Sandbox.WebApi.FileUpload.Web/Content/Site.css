@@ -1,0 +1,15 @@
+﻿form>div {
+    padding: 5px 5px 5px 200px;
+}
+    form > div > label {
+        float: left ;
+        margin-left: -150px;
+        width: 140px;
+    }
+
+form input {
+    border: solid 1px #999;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
