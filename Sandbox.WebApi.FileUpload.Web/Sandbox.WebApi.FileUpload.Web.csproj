@@ -189,6 +189,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\Richmond.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Zepto.js" />
     <Content Include="Scripts\jquery.iframe.js" />
     <Content Include="Scripts\site.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

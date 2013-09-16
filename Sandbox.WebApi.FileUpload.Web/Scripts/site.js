@@ -12,8 +12,6 @@
         };
 
     $("form").upload({
-        url: "/api/upload/",
-        method: "POST",
 
         start: function() {
             $status.val("");
