@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Web;
 using System.Web.Http;
+using Sandbox.WebApi.FileUpload.Web.Uploading;
+using Sandbox.WebApi.FileUpload.Web.Uploading.Azure;
+using Sandbox.WebApi.FileUpload.Web.Uploading.FileSystem;
 
 namespace Sandbox.WebApi.FileUpload.Web
 {
@@ -12,20 +14,23 @@ namespace Sandbox.WebApi.FileUpload.Web
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+                defaults: new {id = RouteParameter.Optional}
+                );
 
             // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
             // To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.
             // For more information, visit http://go.microsoft.com/fwlink/?LinkId=279712.
             //config.EnableQuerySupport();
 
-            // To disable tracing in your application, please comment out or remove the following line of code
-            // For more information, refer to: http://www.asp.net/web-api
-            config.EnableSystemDiagnosticsTracing();
+            UploadMultipartMediaTypeFormatter
+                .Init(config,
+                      (t, c) => new FileSystemUploadWriterProvider(
+                                    HttpContext.Current.Server.MapPath("~/"),
+                                    HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/"
+                                    ));
 
-            config.Formatters.Add(new AzureBlobStorageMultipartMediaTypeFormatter());
-            config.MessageHandlers.Add(new UploadMessageHandler());
+            //UploadMultipartMediaTypeFormatter
+            //    .Init<AzureBlobStorageUploadWriterProvider>(config);
         }
     }
 }

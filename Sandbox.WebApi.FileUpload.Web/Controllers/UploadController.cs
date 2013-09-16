@@ -1,27 +1,26 @@
 ﻿using System.Net;
 using System.Net.Http;
-using System.Runtime.Caching;
+using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Sandbox.WebApi.FileUpload.Web.Models;
+using Sandbox.WebApi.FileUpload.Web.Uploading;
 
 namespace Sandbox.WebApi.FileUpload.Web.Controllers
 {
     public class UploadController : ApiController
     {
-        public async Task<UploadModel> Post(UploadModel model)
+        public async Task<HttpResponseMessage> Post(UploadModel model)
         {
-            
-            return model;
+            var response = Request.CreateResponse();
+            response.Content = new ObjectContent<UploadModel>(model, new JsonMediaTypeFormatter());
+
+            return response;
         }
 
-        public async Task<int> Get(string id)
+        public async Task<UploadStatus<UploadModel>> Get(string id)
         {
-            var status = MemoryCache.Default.Get(id);
-
-            if (status == null) return 100;
-
-            return (int) status;
+            return UploadStatusManager.GetStatus<UploadModel>(id);
         }
     }
 }

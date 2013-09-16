@@ -5,7 +5,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Sandbox.WebApi.FileUpload.Web
+namespace Sandbox.WebApi.FileUpload.Web.Uploading
 {
     public class DynamicJObject
     {

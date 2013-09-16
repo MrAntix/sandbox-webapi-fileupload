@@ -1,6 +1,6 @@
-﻿namespace Sandbox.WebApi.FileUpload.Web
+﻿namespace Sandbox.WebApi.FileUpload.Web.Uploading
 {
-    public class AzureBlob
+    public class UploadFile
     {
         public string ContentType { get; set; }
         public long Size { get; set; }

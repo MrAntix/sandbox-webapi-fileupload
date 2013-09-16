@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Sandbox.WebApi.FileUpload.Web.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AzureBlobStorageUpload_ConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UseDevelopmentStorage=true</Value>
+    </Setting>
+    <Setting Name="AzureBlobStorageUpload_ContainerName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">sandboxfileupload</Value>
+    </Setting>
+    <Setting Name="FileSystemUpload_PathTemplate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0}Content\Uploaded\{1}</Value>
+    </Setting>
+    <Setting Name="FileSystemUpload_UriTemplate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0}Content/Uploaded/{1}</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
