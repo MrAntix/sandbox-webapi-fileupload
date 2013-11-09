@@ -12,6 +12,7 @@ namespace Sandbox.WebApi.FileUpload.Web.Models
     {
         [Required]
         public string Caption { get; set; }
+
         public MediaModel Media { get; set; }
     }
 
