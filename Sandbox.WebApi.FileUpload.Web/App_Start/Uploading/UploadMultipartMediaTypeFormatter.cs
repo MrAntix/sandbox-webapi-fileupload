@@ -1,4 +1,6 @@
-﻿using System;
+﻿//  by Anthony J. Johnston, antix.co.uk
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,11 +12,11 @@ using System.Web.Http;
 
 namespace Sandbox.WebApi.FileUpload.Web.Uploading
 {
-    public class UploadMultipartMediaTypeFormatter : JsonMediaTypeFormatter
+    public class UploadMultipartMediaTypeFormatter : MediaTypeFormatter
     {
         readonly Func<Type, HttpContent, IUploadWriterProvider> _getFilePartStreamProvider;
 
-        public UploadMultipartMediaTypeFormatter(
+        UploadMultipartMediaTypeFormatter(
             Func<Type, HttpContent, IUploadWriterProvider> getFilePartStreamProvider)
         {
             _getFilePartStreamProvider = getFilePartStreamProvider;
@@ -42,7 +44,7 @@ namespace Sandbox.WebApi.FileUpload.Web.Uploading
             var filePartStreamProvider = _getFilePartStreamProvider(type, content);
 
             var streamProvider = new UploadMultipartStreamProvider(
-                filePartStreamProvider, 
+                filePartStreamProvider,
                 statusManager,
                 type);
 
