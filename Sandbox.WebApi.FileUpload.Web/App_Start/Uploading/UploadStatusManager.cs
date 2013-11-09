@@ -22,13 +22,13 @@ namespace Sandbox.WebApi.FileUpload.Web.Uploading
             lock (LockObject)
             {
                 _count += count;
-                Percent = (int) Math.Round(100*_count/(decimal) _total);
+                var percent = (int) Math.Round(100*_count/(decimal) _total);
 
                 var statusType = typeof (UploadStatus<>)
                     .MakeGenericType(model.GetType());
 
                 var status = Activator
-                    .CreateInstance(statusType, _count, _total, Percent, model);
+                    .CreateInstance(statusType, _count, _total, percent, model);
 
                 if (_id != null)
                 {
@@ -37,8 +37,6 @@ namespace Sandbox.WebApi.FileUpload.Web.Uploading
                 }
             }
         }
-
-        public int Percent { get; private set; }
 
         public static UploadStatus<T> GetStatus<T>(string id)
         {
